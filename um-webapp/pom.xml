@@ -227,19 +227,57 @@
             <id>deploy</id>
             <build>
                 <plugins>
+                    
+                    <!-- MHT Code to deploy to localhost -->
+                     <plugin>
+                		<groupId>org.codehaus.cargo</groupId>
+                		<artifactId>cargo-maven2-plugin</artifactId>
+                
+                		<configuration>
 
+                   		 	<container>
+                        		<containerId>tomcat8x</containerId>
+                        		<home>${env.CATALINA_HOME}</home>
+                    	 	</container>
+
+                    		<configuration>
+                        		<type>existing</type>
+                        		<home>${env.CATALINA_HOME}</home>
+                    		</configuration>
+
+                    		<deployables>
+                        		<deployable>
+                            		<groupId>${project.groupId}</groupId>
+                            		<artifactId>${project.artifactId}</artifactId>
+                            		<type>war</type>
+                            		<properties>
+                                		<context>/${project.artifactId}</context>
+                            		</properties>
+                        		</deployable>
+                    		</deployables>
+
+                    		<deployer>
+                        		<type>installed</type>
+                   	 		</deployer>
+
+                		</configuration>
+            		</plugin>
+                    <!-- MHT End of code to deploy to localhost -->
+                    
+                    
+                    <!-- MHT Orig code to deploy to AWS
                     <plugin>
                         <groupId>org.codehaus.cargo</groupId>
                         <artifactId>cargo-maven2-plugin</artifactId>
                         <configuration>
-                            <!-- Container configuration -->
+                           
                             <container>
                                 <containerId>tomcat8x</containerId>
                                 <type>remote</type>
                                 <timeout>1200000</timeout>
                             </container>
 
-                            <!-- Configuration to use with the container -->
+                            
                             <configuration>
                                 <type>runtime</type>
                                 <properties>
@@ -251,12 +289,12 @@
                                 </properties>
                             </configuration>
 
-                            <!-- Deployer configuration -->
+                            
                             <deployer>
                                 <type>remote</type>
                             </deployer>
 
-                            <!-- Deployables configuration -->
+                            
                             <deployables>
                                 <deployable>
                                     <groupId>${project.groupId}</groupId>
@@ -269,6 +307,8 @@
                             </deployables>
                         </configuration>
                     </plugin>
+                    MHT end of orig code for AWS -->
+                    
                 </plugins>
 
             </build>
