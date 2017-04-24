@@ -232,36 +232,36 @@
                      <plugin>
                 		<groupId>org.codehaus.cargo</groupId>
                 		<artifactId>cargo-maven2-plugin</artifactId>
-                
+                		
                 		<configuration>
-
-                   		 	<container>
-                        		<containerId>tomcat8x</containerId>
-                        		<home>${env.CATALINA_HOME}</home>
-                    	 	</container>
-
-                    		<configuration>
-                        		<type>existing</type>
-                        		<home>${env.CATALINA_HOME}</home>
-                    		</configuration>
-
-                    		<deployables>
-                        		<deployable>
-                            		<groupId>${project.groupId}</groupId>
-                            		<artifactId>${project.artifactId}</artifactId>
-                            		<type>war</type>
-                            		<properties>
-                                		<context>/${project.artifactId}</context>
-                            		</properties>
-                        		</deployable>
-                    		</deployables>
-
-                    		<deployer>
-                        		<type>installed</type>
-                   	 		</deployer>
-
+                		    <container>
+                				<containerId>tomcat8x</containerId>
+                				<type>installed</type>
+                				<home>/Users/mhtabak/REST/tomcat</home>
+                		    </container>
+                		    
+                		    <configuration>
+                		    	<type>existing</type>
+                		    	<home>/Users/mhtabak/REST/tomcat</home>
+                		    </configuration>
+                		    
+                		    <deployables>
+                		    	<deployable>
+                		    		<groupId>${project.groupId}</groupId>
+                		    		<artifactId>${project.artifactId}</artifactId>
+                		    		<type>war</type>
+                		    		<properties>
+                		    			<context>/${project.artifactId}</context>
+                		    		</properties>
+                		    	</deployable>
+                		    </deployables>
+                		    
+                		    <deployer>
+                		    	<type>installed</type>
+                		    </deployer>
+                		    
                 		</configuration>
-            		</plugin>
+                	</plugin>
                     <!-- MHT End of code to deploy to localhost -->
                     
                     
